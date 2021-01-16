@@ -10,6 +10,7 @@ dependencies:
 - ipykernel=5.1
 - ipywidgets=7.5
 - ipyleaflet=0.12
+- ipympl
 - altair=3.1
 - bqplot=0.12
 - dask=2.1
