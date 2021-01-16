@@ -14,6 +14,7 @@ dependencies:
 - altair
 - bqplot
 - dask
+- lmfit
 - matplotlib
 - pandas
 - python
