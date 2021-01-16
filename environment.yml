@@ -6,8 +6,6 @@ dependencies:
 - nodejs
 - nbconvert
 - widgetsnbextension
-- jupyter-leaflet
-- jupyter-matplotlib
 # Python Kernel
 - ipykernel
 - ipywidgets
