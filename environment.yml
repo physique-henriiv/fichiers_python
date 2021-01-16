@@ -3,6 +3,7 @@ channels:
 dependencies:
 # Jupyter
 - jupyterlab
+- jupyterlab-widgets
 - nodejs
 - nbconvert
 - widgetsnbextension
