@@ -2,36 +2,36 @@ channels:
 - conda-forge
 dependencies:
 # Jupyter
-- jupyterlab
-- nodejs
-- nbconvert
-- widgetsnbextension
+- jupyterlab=3
+- nodejs=12
+- nbconvert=6
+- widgetsnbextension=3.5
 # Python Kernel
-- ipykernel
-- ipywidgets
-- ipyleaflet
+- ipykernel=5.1
+- ipywidgets=7.6
+# - ipyleaflet=0.12
 - ipympl
-- altair
-- bqplot
-- dask
+#- altair=3.1
+#- bqplot=0.12
+#- dask=2.1
 - lmfit
-- matplotlib
-- pandas
-- python
-- scikit-image
-- scikit-learn
-- seaborn
-- tensorflow
-- sympy
+- matplotlib=3.1
+- pandas=1
+- python=3.7
+#- scikit-image=0.15
+#- scikit-learn=0.21
+#- seaborn=0.11
+#- tensorflow=1.13
+- sympy=1.4
 - pyyaml
-- traittypes
-- invoke
+- traittypes==0.2.1
+- invoke=1.2
 # C++ Kernel
-- xeus-cling
-- xtensor
-- xtensor-blas
-- xwidgets
-- xleaflet
+#- xeus-cling
+#- xtensor
+#- xtensor-blas
+#- xwidgets
+#- xleaflet
 # R Kernel
-- r-ggplot2
-- r-irkernel
+#- r-ggplot2
+#- r-irkernel
