@@ -10,6 +10,9 @@ dependencies:
   - pandas
   - scipy
   - seaborn
+  - ipywidgets
+  - pyserial
+  - lmfit
   - jupyterlab
   - nodejs
   - pip:
