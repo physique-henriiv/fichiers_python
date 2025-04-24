@@ -9,6 +9,5 @@ dependencies:
   - nodejs
   - pip:
     - jupyterlab-spreadsheet-editor
-    - jupyterlab-language-pack-fr
     - jupyterlab-theme-solarized-dark
 # Add any additional conda dependencies here
