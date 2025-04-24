@@ -6,6 +6,10 @@ dependencies:
   - notebook
   - ipykernel
   - matplotlib
+  - numpy
+  - pandas
+  - scipy
+  - seaborn
   - jupyterlab
   - nodejs
   - pip:
