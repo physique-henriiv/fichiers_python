@@ -1,0 +1,12 @@
+# Ignore Python caches
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Virtual environments
+.venv/
+env/
+venv/
+
+# Binder files
+binder/
