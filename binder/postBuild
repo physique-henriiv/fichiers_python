@@ -1,1 +1,3 @@
 #!/bin/bash
+pip install jupyterlab-spreadsheet-editor jupyterlab-language-pack-fr jupyterlab-theme-solarized-dark
+jupyter lab build
