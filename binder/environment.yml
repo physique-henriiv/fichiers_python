@@ -6,11 +6,12 @@ dependencies:
   - notebook
   - ipykernel
   - matplotlib
+  - ipympl  # for %matplotlib ipympl backend
+  - ipywidgets
   - numpy
   - pandas
   - scipy
   - seaborn
-  - ipywidgets
   - pyserial
   - lmfit
   - jupyterlab
