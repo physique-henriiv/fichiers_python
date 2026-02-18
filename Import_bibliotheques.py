@@ -14,8 +14,6 @@ import sys
 if 'pyodide' in sys.modules:
     try:
         import piplite
-        # On ne peut pas utiliser await ici car on est dans un module .py
-        # Mais JupyterLite gère souvent l'install au premier import si config est bonne
     except ImportError:
         pass
 
@@ -36,8 +34,12 @@ def Modele(expression, x, y, contraintes):
     resultat = modele.fit(y, parametres, x = x)
     valeurs = ""
     for key in resultat.params:
-        valeurs += f"{key} = {resultat.params[key].value:.3g} ; incertitude : {resultat.params[key].stderr:.2g}
-"
+        # On garde votre f-string préférée
+        # On s'assure juste que stderr n'est pas None pour le formatage .2g
+        if resultat.params[key].stderr is not None:
+            valeurs += f"{key} = {resultat.params[key].value:.3g} ; incertitude : {resultat.params[key].stderr:.2g}\n"
+        else:
+            valeurs += f"{key} = {resultat.params[key].value:.3g} ; incertitude : ?\n"
     return(modele, resultat.params, valeurs, expression)
 
 def Calcul_modele(abscisse_name, ordonnee_name, equation, debut, fin, debutCourbe, finCourbe, contraintes):
@@ -45,7 +47,6 @@ def Calcul_modele(abscisse_name, ordonnee_name, equation, debut, fin, debutCourb
     eq_val = equation
     equation_mod = re.sub(r"\b"+abscisse_name+r"\b","x", equation)
     
-    # Récupération des données depuis le scope global de l'appelant
     import __main__
     abscisse = getattr(__main__, abscisse_name)
     ordonnee = getattr(__main__, ordonnee_name)
