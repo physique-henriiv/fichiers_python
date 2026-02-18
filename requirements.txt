@@ -7,3 +7,5 @@ scipy
 seaborn
 lmfit
 jupyterlab-spreadsheet-editor
+nbformat
+ipykernel
