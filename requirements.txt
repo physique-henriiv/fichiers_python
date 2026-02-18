@@ -8,5 +8,3 @@ seaborn
 lmfit
 nbformat
 jsonschema
-fastjsonschema
-ipykernel
