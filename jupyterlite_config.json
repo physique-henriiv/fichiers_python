@@ -7,11 +7,20 @@
       "\\.github.*",
       "\\.jupyter.*",
       "binder.*",
-      "requirements.*",
-      "README\\.md"
+      "requirements_old\\.txt"
     ]
   },
   "ContentsManager": {
     "allow_hidden": true
+  },
+  "PyodideKernel": {
+    "pre_install": [
+      "nbformat",
+      "matplotlib",
+      "ipympl",
+      "numpy",
+      "pandas",
+      "scipy"
+    ]
   }
 }
