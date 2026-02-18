@@ -6,6 +6,7 @@ pandas
 scipy
 seaborn
 lmfit
-jupyterlab-spreadsheet-editor
 nbformat
+jsonschema
+fastjsonschema
 ipykernel

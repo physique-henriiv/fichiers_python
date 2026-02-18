@@ -26,11 +26,11 @@ jobs:
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install jupyterlite-core jupyterlite-pyodide-kernel jupyter-server fsspec nbformat ipykernel matplotlib ipympl numpy pandas scipy
+          pip install jupyterlite-core jupyterlite-pyodide-kernel jupyter-server fsspec
 
       - name: Build JupyterLite
         run: |
-          jupyter lite build --contents . --output-archive jupyterlite-export.tar.gz --piplite-wheels requirements.txt
+          jupyter lite build --contents . --output-archive jupyterlite-export.tar.gz
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

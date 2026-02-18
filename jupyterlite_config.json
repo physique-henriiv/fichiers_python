@@ -7,20 +7,13 @@
       "\\.github.*",
       "\\.jupyter.*",
       "binder.*",
-      "requirements_old\\.txt"
+      "requirements_old\\.txt",
+      "qmk_.*",
+      "lycee.*",
+      "test_mount.*"
     ]
   },
-  "ContentsManager": {
-    "allow_hidden": true
-  },
-  "PyodideKernel": {
-    "pre_install": [
-      "nbformat",
-      "matplotlib",
-      "ipympl",
-      "numpy",
-      "pandas",
-      "scipy"
-    ]
+  "jupyter-config-data": {
+    "autoinstall": true
   }
 }
