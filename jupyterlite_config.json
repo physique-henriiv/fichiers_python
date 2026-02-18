@@ -1,6 +1,13 @@
 {
   "LiteBuildConfig": {
     "output_dir": "_output",
-    "contents": "."
+    "contents": ".",
+    "extra_ignore_contents": [
+      ".git",
+      ".github",
+      ".jupyter",
+      "binder",
+      "requirements_old.txt"
+    ]
   }
 }
