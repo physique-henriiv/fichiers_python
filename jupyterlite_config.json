@@ -2,12 +2,16 @@
   "LiteBuildConfig": {
     "output_dir": "_output",
     "contents": ".",
-    "extra_ignore_contents": [
-      ".git",
-      ".github",
-      ".jupyter",
-      "binder",
-      "requirements_old.txt"
+    "ignore_contents": [
+      "\\.git.*",
+      "\\.github.*",
+      "\\.jupyter.*",
+      "binder.*",
+      "requirements.*",
+      "README\\.md"
     ]
+  },
+  "ContentsManager": {
+    "allow_hidden": true
   }
 }
