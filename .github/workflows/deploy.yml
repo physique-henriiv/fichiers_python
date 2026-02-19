@@ -34,7 +34,7 @@ jobs:
           jupyter lite build --contents . --output-archive jupyterlite-export.tar.gz
 
       - name: Upload artifact
-        uses: upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v3
         with:
           path: ./_output
 
