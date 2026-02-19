@@ -4,9 +4,20 @@ import re
 from time import *
 from IPython.display import display, clear_output
 import ipywidgets as widgets
+from IPython import get_ipython
 
 # Accès à l'espace de noms du notebook
 main = sys.modules['__main__']
+
+# Activation d'ipympl (graphiques interactifs) et réglages par défaut
+ip = get_ipython()
+if ip:
+    ip.run_line_magic('matplotlib', 'ipympl')
+    from pylab import rcParams
+    rcParams['figure.figsize'] = [16, 8]
+    rcParams['font.size'] = 15
+    rcParams['lines.markersize'] = 15
+    rcParams['lines.markeredgewidth'] = 2
 
 def tableurVersVariables(fichier, delimiter=','):
     """Importe un CSV et crée les variables directement dans le notebook."""
@@ -18,7 +29,7 @@ def Modele(expression, x, y, contraintes):
     try:
         from lmfit.models import ExpressionModel
     except ImportError:
-        print("Erreur : lmfit n'est pas encore prêt. Attendez 5 secondes et relancez la cellule.")
+        print("Erreur : lmfit n'est pas encore prêt. Relancez la cellule dans quelques secondes.")
         return None
         
     modele = ExpressionModel(expression)
