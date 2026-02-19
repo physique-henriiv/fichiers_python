@@ -32,7 +32,12 @@ jobs:
 
       - name: Build JupyterLite
         run: |
-          jupyter lite build --contents . --output-archive jupyterlite-export.tar.gz --overrides overrides/overrides.json
+          jupyter lite build --contents . --output-archive jupyterlite-export.tar.gz
+          # Injection de force du français
+          mkdir -p _output/lab/settings
+          echo '{\"@jupyterlab/translation-extension:plugin\": {\"locale\": \"fr_FR\"}}' > _output/lab/settings/overrides.json
+          # Injection de force de la langue dans le fichier de config principal
+          sed -i 's/\"locale\": \"\"/\"locale\": \"fr_FR\"/g' _output/jupyter-lite.json || true
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

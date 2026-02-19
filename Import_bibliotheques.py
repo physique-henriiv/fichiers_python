@@ -5,9 +5,9 @@ from time import *
 from IPython.display import display, clear_output
 import ipywidgets as widgets
 import matplotlib.pyplot as plt
-from pylab import rcParams
 
-# Configuration des réglages graphiques (Taille importante !)
+# Configuration des réglages graphiques par défaut (Taille)
+from pylab import rcParams
 rcParams['figure.figsize'] = [16, 8]
 rcParams['font.size'] = 15
 rcParams['lines.markersize'] = 15
@@ -26,9 +26,8 @@ def Modele(expression, x, y, contraintes):
     try:
         from lmfit.models import ExpressionModel
     except ImportError:
-        print("Erreur : lmfit n'est pas encore prêt. Relancez la cellule.")
+        print("Erreur : lmfit n'est pas prêt. Attendez et relancez.")
         return None
-        
     modele = ExpressionModel(expression)
     parametres = modele.make_params()
     for i in parametres:
@@ -50,24 +49,18 @@ def Calcul_modele(abscisse_name, ordonnee_name, equation, debut, fin, debutCourb
     ord_val = ordonnee_name
     eq_val = equation
     equation_mod = re.sub(r"\b" + abscisse_name + r"\b", "x", equation)
-    
     abscisse = getattr(main, abscisse_name)
     ordonnee = getattr(main, ordonnee_name)
-    
     if debutCourbe is None:
         debutCourbe = min(abscisse)
     if finCourbe is None:
         finCourbe = max(abscisse)
-    
     xMod = np.linspace(debutCourbe, finCourbe, 30)
     res = Modele(equation_mod, abscisse[debut:fin], ordonnee[debut:fin], contraintes)
     if res is None: return None
-    
     modele, parametres, valeurs, expression = res
     expression = f"{ord_val} = {eq_val}"
     yMod = modele.eval(parametres, x=xMod)
-    
     for key in parametres:
         setattr(main, key, parametres[key].value)
-    
     return (xMod, yMod, expression, valeurs, abscisse, ordonnee, modele, parametres)
