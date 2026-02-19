@@ -1,3 +1,10 @@
+import sys
+
+# Installation automatique des modules sous JupyterLite (Pyodide)
+if 'pyodide' in sys.modules:
+    import piplite
+    await piplite.install(['numpy', 'scipy', 'matplotlib', 'lmfit', 'pandas', 'seaborn', 'ipympl'])
+
 from pylab import *
 from scipy import interpolate
 from scipy.optimize import curve_fit
@@ -8,7 +15,6 @@ import re
 import numpy as np
 import ipywidgets as widgets
 from IPython.display import display, clear_output
-import sys
 
 # Accès à l'espace de noms du notebook
 main = sys.modules['__main__']
@@ -42,7 +48,6 @@ def Calcul_modele(abscisse_name, ordonnee_name, equation, debut, fin, debutCourb
     eq_val = equation
     equation_mod = re.sub(r"\b" + abscisse_name + r"\b", "x", equation)
     
-    # On récupère les variables du notebook
     abscisse = getattr(main, abscisse_name)
     ordonnee = getattr(main, ordonnee_name)
     
@@ -56,7 +61,6 @@ def Calcul_modele(abscisse_name, ordonnee_name, equation, debut, fin, debutCourb
     expression = f"{ord_val} = {eq_val}"
     yMod = modele.eval(parametres, x=xMod)
     
-    # On injecte les paramètres trouvés (ex: a, b) comme variables globales dans le notebook
     for key in parametres:
         setattr(main, key, parametres[key].value)
     

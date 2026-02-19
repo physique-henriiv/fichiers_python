@@ -28,14 +28,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install jupyterlite-core jupyterlite-pyodide-kernel jupyter-server fsspec
 
-      - name: Pre-download wheels
-        run: |
-          mkdir -p static/wheels
-          pip wheel -r requirements.txt -w static/wheels
-
       - name: Build JupyterLite
         run: |
-          jupyter lite build --contents . --piplite-wheels static/wheels/ --output-archive jupyterlite-export.tar.gz
+          jupyter lite build --contents . --output-archive jupyterlite-export.tar.gz
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
