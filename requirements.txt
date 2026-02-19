@@ -2,9 +2,5 @@ matplotlib
 ipympl
 ipywidgets
 numpy
-pandas
 scipy
-seaborn
 lmfit
-nbformat
-jsonschema
