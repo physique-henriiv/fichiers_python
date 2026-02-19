@@ -32,12 +32,19 @@ jobs:
 
       - name: Build JupyterLite
         run: |
+          # Installation forcée pour le build
+          pip install jupyterlab-language-pack-fr-FR jupyterlab-spreadsheet-editor
+          
           jupyter lite build --contents . --output-archive jupyterlite-export.tar.gz
-          # Injection de force du français
+          
+          # Injection des paramètres de langue
           mkdir -p _output/lab/settings
-          echo '{\"@jupyterlab/translation-extension:plugin\": {\"locale\": \"fr_FR\"}}' > _output/lab/settings/overrides.json
-          # Injection de force de la langue dans le fichier de config principal
-          sed -i 's/\"locale\": \"\"/\"locale\": \"fr_FR\"/g' _output/jupyter-lite.json || true
+          echo '{"@jupyterlab/translation-extension:plugin": {"locale": "fr_FR"}}' > _output/lab/settings/overrides.json
+          
+          # Force la langue dans le fichier de config principal
+          if [ -f _output/jupyter-lite.json ]; then
+            sed -i 's/"locale": ""/"locale": "fr_FR"/g' _output/jupyter-lite.json
+          fi
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

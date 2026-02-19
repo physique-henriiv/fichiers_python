@@ -5,9 +5,9 @@ from time import *
 from IPython.display import display, clear_output
 import ipywidgets as widgets
 import matplotlib.pyplot as plt
-
-# Configuration des réglages graphiques par défaut (Taille)
 from pylab import rcParams
+
+# Configuration des réglages graphiques (Taille importante)
 rcParams['figure.figsize'] = [16, 8]
 rcParams['font.size'] = 15
 rcParams['lines.markersize'] = 15
@@ -26,7 +26,6 @@ def Modele(expression, x, y, contraintes):
     try:
         from lmfit.models import ExpressionModel
     except ImportError:
-        print("Erreur : lmfit n'est pas prêt. Attendez et relancez.")
         return None
     modele = ExpressionModel(expression)
     parametres = modele.make_params()
