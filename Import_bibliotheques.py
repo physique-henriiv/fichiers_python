@@ -9,10 +9,16 @@ from IPython import get_ipython
 # Accès à l'espace de noms du notebook
 main = sys.modules['__main__']
 
-# Activation d'ipympl (graphiques interactifs) et réglages par défaut
+# Activation sécurisée des graphiques interactifs
 ip = get_ipython()
 if ip:
-    ip.run_line_magic('matplotlib', 'ipympl')
+    try:
+        # 'widget' est l'alias recommandé pour ipympl
+        ip.run_line_magic('matplotlib', 'widget')
+    except Exception:
+        # Repli sur le mode standard en cas d'erreur (évite de bloquer le notebook)
+        ip.run_line_magic('matplotlib', 'inline')
+    
     from pylab import rcParams
     rcParams['figure.figsize'] = [16, 8]
     rcParams['font.size'] = 15
@@ -29,7 +35,7 @@ def Modele(expression, x, y, contraintes):
     try:
         from lmfit.models import ExpressionModel
     except ImportError:
-        print("Erreur : lmfit n'est pas encore prêt. Relancez la cellule dans quelques secondes.")
+        print("Erreur : lmfit n'est pas encore prêt. Relancez la cellule.")
         return None
         
     modele = ExpressionModel(expression)
