@@ -1,26 +1,34 @@
 import sys
+from IPython import get_ipython
+
+# 1. Activation PRIORITAIRE du backend interactif
+ip = get_ipython()
+if ip:
+    # On essaie d'abord la commande magique
+    try:
+        ip.run_line_magic('matplotlib', 'widget')
+    except:
+        try:
+            ip.run_line_magic('matplotlib', 'ipympl')
+        except:
+            pass
+
 import numpy as np
 import re
 from time import *
 from IPython.display import display, clear_output
 import ipywidgets as widgets
-from IPython import get_ipython
+
+# 2. Configuration des réglages graphiques (après activation du backend)
+import matplotlib.pyplot as plt
+from pylab import rcParams
+rcParams['figure.figsize'] = [16, 8]
+rcParams['font.size'] = 15
+rcParams['lines.markersize'] = 15
+rcParams['lines.markeredgewidth'] = 2
 
 # Accès à l'espace de noms du notebook
 main = sys.modules['__main__']
-
-# Configuration graphique
-ip = get_ipython()
-if ip:
-    # On force le backend interactif ipympl
-    # Note: 'widget' est le nom officiel du backend fourni par ipympl
-    ip.run_line_magic('matplotlib', 'widget')
-    
-    from pylab import rcParams
-    rcParams['figure.figsize'] = [16, 8]
-    rcParams['font.size'] = 15
-    rcParams['lines.markersize'] = 15
-    rcParams['lines.markeredgewidth'] = 2
 
 def tableurVersVariables(fichier, delimiter=','):
     """Importe un CSV et crée les variables directement dans le notebook."""
