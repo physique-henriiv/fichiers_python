@@ -1,9 +1,13 @@
 import sys
+from IPython import get_ipython
 
 # Installation automatique des modules sous JupyterLite (Pyodide)
+# On utilise une méthode indirecte pour éviter les erreurs de syntaxe 'await'
 if 'pyodide' in sys.modules:
-    import piplite
-    await piplite.install(['numpy', 'scipy', 'matplotlib', 'lmfit', 'pandas', 'seaborn', 'ipympl'])
+    ip = get_ipython()
+    if ip:
+        # On exécute l'installation comme si elle était tapée dans une cellule
+        ip.run_cell("import piplite; await piplite.install(['numpy', 'scipy', 'matplotlib', 'lmfit', 'pandas', 'seaborn', 'ipympl'])")
 
 from pylab import *
 from scipy import interpolate
