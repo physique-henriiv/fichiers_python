@@ -7,15 +7,10 @@
       "\\.github.*",
       "\\.jupyter.*",
       "binder.*",
-      "requirements_old\\.txt",
-      "qmk_.*",
-      "lycee.*",
-      "test_mount.*"
+      "requirements_old\\.txt"
     ]
   },
   "jupyter-config-data": {
-    "autoinstall": true,
-    "locale": "fr_FR",
-    "language": "fr_FR"
+    "autoinstall": true
   }
 }

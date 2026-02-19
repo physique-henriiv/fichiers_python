@@ -1,10 +1,6 @@
 matplotlib
-ipympl
-ipywidgets
-jupyterlab-widgets
 numpy
 scipy
 lmfit
 nbformat
-jupyterlab-language-pack-fr-FR
 jupyterlab-spreadsheet-editor
