@@ -1,14 +1,9 @@
-from pylab import *
-from scipy import interpolate
-from scipy.optimize import curve_fit
-from lmfit import minimize, Parameters, Parameter, report_fit
-from lmfit.models import ExpressionModel
-from time import *
-import re
-import numpy as np
-import ipywidgets as widgets
-from IPython.display import display, clear_output
 import sys
+import numpy as np
+import re
+from time import *
+from IPython.display import display, clear_output
+import ipywidgets as widgets
 
 # Accès à l'espace de noms du notebook
 main = sys.modules['__main__']
@@ -20,6 +15,12 @@ def tableurVersVariables(fichier, delimiter=','):
         setattr(main, i, tableau[i])
 
 def Modele(expression, x, y, contraintes):
+    try:
+        from lmfit.models import ExpressionModel
+    except ImportError:
+        print("Erreur : lmfit n'est pas encore prêt. Attendez 5 secondes et relancez la cellule.")
+        return None
+        
     modele = ExpressionModel(expression)
     parametres = modele.make_params()
     for i in parametres:
@@ -32,33 +33,33 @@ def Modele(expression, x, y, contraintes):
     valeurs = ""
     for key in resultat.params:
         if resultat.params[key].stderr is not None:
-            valeurs += f"{key} = {resultat.params[key].value:.3g} ; incertitude : {resultat.params[key].stderr:.2g}
-"
+            valeurs += f"{key} = {resultat.params[key].value:.3g} ; incertitude : {resultat.params[key].stderr:.2g}\n"
         else:
-            valeurs += f"{key} = {resultat.params[key].value:.3g} ; incertitude : ?
-"
+            valeurs += f"{key} = {resultat.params[key].value:.3g} ; incertitude : ?\n"
     return (modele, resultat.params, valeurs, expression)
 
 def Calcul_modele(abscisse_name, ordonnee_name, equation, debut, fin, debutCourbe, finCourbe, contraintes):
     ord_val = ordonnee_name
     eq_val = equation
     equation_mod = re.sub(r"\b" + abscisse_name + r"\b", "x", equation)
+    
     abscisse = getattr(main, abscisse_name)
     ordonnee = getattr(main, ordonnee_name)
+    
     if debutCourbe is None:
         debutCourbe = min(abscisse)
     if finCourbe is None:
         finCourbe = max(abscisse)
+    
     xMod = np.linspace(debutCourbe, finCourbe, 30)
-    modele, parametres, valeurs, expression = Modele(equation_mod, abscisse[debut:fin], ordonnee[debut:fin], contraintes)
+    res = Modele(equation_mod, abscisse[debut:fin], ordonnee[debut:fin], contraintes)
+    if res is None: return None
+    
+    modele, parametres, valeurs, expression = res
     expression = f"{ord_val} = {eq_val}"
     yMod = modele.eval(parametres, x=xMod)
+    
     for key in parametres:
         setattr(main, key, parametres[key].value)
+    
     return (xMod, yMod, expression, valeurs, abscisse, ordonnee, modele, parametres)
-
-# Configuration graphique par défaut
-rcParams['figure.figsize'] = [16, 8]
-rcParams['font.size'] = 15
-rcParams['lines.markersize'] = 15
-rcParams['lines.markeredgewidth'] = 2
