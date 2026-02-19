@@ -14,6 +14,7 @@
     ]
   },
   "jupyter-config-data": {
-    "autoinstall": true
+    "autoinstall": true,
+    "locale": "fr_FR"
   }
 }
