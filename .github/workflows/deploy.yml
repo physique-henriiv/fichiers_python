@@ -32,10 +32,7 @@ jobs:
 
       - name: Build JupyterLite
         run: |
-          jupyter lite build --contents . --output-archive jupyterlite-export.tar.gz
-          # Injection forcée de la langue française dans les réglages
-          mkdir -p _output/lab/settings
-          echo '{"@jupyterlab/translation-extension:plugin": {"locale": "fr_FR"}}' > _output/lab/settings/overrides.json
+          jupyter lite build --contents . --output-archive jupyterlite-export.tar.gz --overrides overrides/overrides.json
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
