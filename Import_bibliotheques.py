@@ -4,17 +4,17 @@ import re
 from time import *
 from IPython.display import display, clear_output
 import ipywidgets as widgets
-
-# Accès à l'espace de noms du notebook
-main = sys.modules['__main__']
-
-# Configuration des réglages graphiques par défaut
 import matplotlib.pyplot as plt
 from pylab import rcParams
+
+# Configuration des réglages graphiques (Taille importante !)
 rcParams['figure.figsize'] = [16, 8]
 rcParams['font.size'] = 15
 rcParams['lines.markersize'] = 15
 rcParams['lines.markeredgewidth'] = 2
+
+# Accès à l'espace de noms du notebook
+main = sys.modules['__main__']
 
 def tableurVersVariables(fichier, delimiter=','):
     """Importe un CSV et crée les variables directement dans le notebook."""
