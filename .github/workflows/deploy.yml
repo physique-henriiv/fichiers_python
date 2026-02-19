@@ -32,24 +32,29 @@ jobs:
 
       - name: Build JupyterLite
         run: |
-          pip install jupyterlab-language-pack-fr-FR jupyterlab-spreadsheet-editor
           jupyter lite build --contents . --output-archive jupyterlite-export.tar.gz
           
-          # Injection profonde du français dans la configuration du site
-          if [ -f _output/jupyter-lite.json ]; then
-            python3 -c \"
-            import json
-            with open('_output/jupyter-lite.json', 'r') as f:
-                data = json.load(f)
-            data.setdefault('jupyter-config-data', {})['locale'] = 'fr_FR'
-            with open('_output/jupyter-lite.json', 'w') as f:
-                json.dump(data, f)
-            \"
-          fi
-          
-          # Overrides pour l'interface utilisateur
+          # Configuration de la langue via overrides
           mkdir -p _output/lab/settings
-          echo '{\"@jupyterlab/translation-extension:plugin\": {\"locale\": \"fr_FR\"}}' > _output/lab/settings/overrides.json
+          cat <<EOF > _output/lab/settings/overrides.json
+          {
+            "@jupyterlab/translation-extension:plugin": {
+              "locale": "fr_FR"
+            }
+          }
+          EOF
+          
+          # Injection profonde dans jupyter-lite.json
+          python3 -c "
+          import json, os
+          path = '_output/jupyter-lite.json'
+          if os.path.exists(path):
+              with open(path, 'r') as f:
+                  data = json.load(f)
+              data.setdefault('jupyter-config-data', {})['locale'] = 'fr_FR'
+              with open(path, 'w') as f:
+                  json.dump(data, f, indent=2)
+          "
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
