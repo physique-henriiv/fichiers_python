@@ -2,7 +2,6 @@
   "LiteBuildConfig": {
     "output_dir": "_output",
     "contents": ".",
-    "overrides": ["overrides.json"],
     "ignore_contents": [
       "\\.git.*",
       "\\.github.*",
@@ -11,12 +10,12 @@
       "requirements_old\\.txt",
       "qmk_.*",
       "lycee.*",
-      "test_mount.*",
-      "overrides\\.json"
+      "test_mount.*"
     ]
   },
   "jupyter-config-data": {
     "autoinstall": true,
-    "locale": "fr_FR"
+    "locale": "fr_FR",
+    "language": "fr_FR"
   }
 }
