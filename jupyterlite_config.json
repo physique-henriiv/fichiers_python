@@ -2,6 +2,7 @@
   "LiteBuildConfig": {
     "output_dir": "_output",
     "contents": ".",
+    "overrides": ["overrides/overrides.json"],
     "ignore_contents": [
       "\\.git.*",
       "\\.github.*",
