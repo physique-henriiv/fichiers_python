@@ -1,6 +1,7 @@
 matplotlib
 ipympl
 ipywidgets
+jupyterlab-widgets
 numpy
 scipy
 lmfit
