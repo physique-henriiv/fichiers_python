@@ -2,7 +2,7 @@
   "LiteBuildConfig": {
     "output_dir": "_output",
     "contents": ".",
-    "overrides": ["overrides/overrides.json"],
+    "overrides": ["overrides.json"],
     "ignore_contents": [
       "\\.git.*",
       "\\.github.*",
@@ -11,7 +11,8 @@
       "requirements_old\\.txt",
       "qmk_.*",
       "lycee.*",
-      "test_mount.*"
+      "test_mount.*",
+      "overrides\\.json"
     ]
   },
   "jupyter-config-data": {
