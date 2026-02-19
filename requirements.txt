@@ -3,4 +3,5 @@ numpy
 scipy
 lmfit
 nbformat
+ipywidgets
 jupyterlab-spreadsheet-editor
