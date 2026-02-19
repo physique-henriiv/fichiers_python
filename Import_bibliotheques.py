@@ -9,15 +9,12 @@ from IPython import get_ipython
 # Accès à l'espace de noms du notebook
 main = sys.modules['__main__']
 
-# Activation sécurisée des graphiques interactifs
+# Configuration graphique
 ip = get_ipython()
 if ip:
-    try:
-        # 'widget' est l'alias recommandé pour ipympl
-        ip.run_line_magic('matplotlib', 'widget')
-    except Exception:
-        # Repli sur le mode standard en cas d'erreur (évite de bloquer le notebook)
-        ip.run_line_magic('matplotlib', 'inline')
+    # On force le backend interactif ipympl
+    # Note: 'widget' est le nom officiel du backend fourni par ipympl
+    ip.run_line_magic('matplotlib', 'widget')
     
     from pylab import rcParams
     rcParams['figure.figsize'] = [16, 8]
