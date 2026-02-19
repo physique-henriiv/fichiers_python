@@ -4,4 +4,5 @@ scipy
 lmfit
 nbformat
 ipywidgets
+jupyterlab-widgets
 jupyterlab-spreadsheet-editor

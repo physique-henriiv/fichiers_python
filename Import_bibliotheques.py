@@ -3,7 +3,13 @@ import numpy as np
 import re
 from time import *
 from IPython.display import display, clear_output
-import ipywidgets as widgets
+
+# Import optionnel de ipywidgets pour éviter de bloquer le démarrage
+try:
+    import ipywidgets as widgets
+except ImportError:
+    widgets = None
+
 import matplotlib.pyplot as plt
 from pylab import *
 
