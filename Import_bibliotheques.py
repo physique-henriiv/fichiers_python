@@ -4,6 +4,8 @@ from lmfit.models import ExpressionModel
 import re
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
+import plotly.io as pio
+pio.renderers.default = 'iframe'
 
 
 def tableurVersVariables(fichier, delimiter=','):
