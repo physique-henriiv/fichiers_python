@@ -4,8 +4,11 @@ from lmfit.models import ExpressionModel
 import re
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
-import plotly.io as pio
-pio.renderers.default = 'iframe'
+from IPython.display import display
+
+def _show(self, *args, **kwargs):
+    display({'application/vnd.plotly.v1+json': self.to_dict()}, raw=True)
+go.Figure.show = _show
 
 
 def tableurVersVariables(fichier, delimiter=','):
