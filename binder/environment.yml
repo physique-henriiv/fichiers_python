@@ -6,17 +6,15 @@ dependencies:
   - notebook
   - ipykernel
   - matplotlib
-  - ipympl  # for %matplotlib ipympl backend
+  - ipympl
   - ipywidgets
   - numpy
   - pandas
   - scipy
   - seaborn
-  - pyserial
   - lmfit
   - jupyterlab
-  - nodejs
+  - nbformat
+  - nbconvert
   - pip:
-    - jupyterlab-spreadsheet-editor
-    - jupyterlab-theme-solarized-dark
-# Add any additional conda dependencies here
+    - jupyterlab-language-pack-fr-FR

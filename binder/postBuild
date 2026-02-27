@@ -1,5 +1,5 @@
 #!/bin/bash
-pip install jupyterlab-spreadsheet-editor jupyterlab-language-pack-fr jupyterlab-theme-solarized-dark
-jupyter labextension install jupyter-matplotlib
-pip install ipympl
-jupyter lab build
+set -e
+
+# Enable ipympl (interactive matplotlib)
+jupyter nbextension enable --py widgetsnbextension --sys-prefix

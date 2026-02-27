@@ -1,9 +1,0 @@
-matplotlib
-numpy
-scipy
-lmfit
-nbformat
-plotly
-ipywidgets
-jupyterlab-widgets
-jupyterlab-spreadsheet-editor
