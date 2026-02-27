@@ -18,3 +18,4 @@ dependencies:
   - nbconvert
   - pip:
     - jupyterlab-language-pack-fr-FR
+    - jupyterlab-spreadsheet-editor
