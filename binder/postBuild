@@ -1,9 +1,9 @@
 #!/bin/bash
 set -e
 
-# Définir le français comme langue par défaut de JupyterLab
-mkdir -p "${CONDA_PREFIX}/share/jupyter/lab/settings"
-cat > "${CONDA_PREFIX}/share/jupyter/lab/settings/overrides.json" << 'EOF'
+SETTINGS_DIR=$(python -c "import sys; print(sys.prefix)")/share/jupyter/lab/settings
+mkdir -p "${SETTINGS_DIR}"
+cat > "${SETTINGS_DIR}/overrides.json" << 'EOF'
 {
   "@jupyterlab/translation-extension:plugin": {
     "locale": "fr_FR"
