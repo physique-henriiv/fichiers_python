@@ -1,5 +1,0 @@
-#!/bin/bash
-set -e
-
-# Enable ipympl (interactive matplotlib)
-jupyter nbextension enable --py widgetsnbextension --sys-prefix
