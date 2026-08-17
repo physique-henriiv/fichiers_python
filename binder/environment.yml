@@ -6,7 +6,6 @@ dependencies:
   - notebook
   - ipykernel
   - matplotlib
-  - ipympl
   - ipywidgets
   - numpy
   - scipy
