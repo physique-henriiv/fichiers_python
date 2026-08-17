@@ -9,10 +9,9 @@ dependencies:
   - ipympl
   - ipywidgets
   - numpy
-  - pandas
   - scipy
-  - seaborn
   - lmfit
+  - plotly
   - jupyterlab
   - nbformat
   - nbconvert
